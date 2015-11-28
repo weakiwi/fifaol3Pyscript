@@ -1,4 +1,3 @@
-#author-weakwi，使用前注意调成非全屏，800*600分辨率，后期会尽量友好的
 #coding=utf-8
 import win32api
 import win32con
@@ -249,10 +248,6 @@ def pressEsc():
     win32api.keybd_event(27,0,0,0)
     time.sleep(0.1)
     win32api.keybd_event(27,0,win32con.KEYEVENTF_KEYUP,0)
-def makeWindowtop():
-    game_hwnd = win32gui.FindWindow('KeyboardTest','键盘检测工具 2.8')
-    win32gui.ShowWindow(game_hwnd, win32con.SW_RESTORE)
-    win32gui.SetForegroundWindow(game_hwnd) 
 def moveAndclick(x, y):
     mouse_move(x, y)
     mouse_click(x, y)    
@@ -279,14 +274,14 @@ if __name__ == '__main__':
         print i
         time.sleep(1)
     user_x,user_y = get_mouse_point()
-    mouse_move(game_rect[0]+user_x, game_rect[1]+user_y)
-    mouse_click(game_rect[0]+user_x, game_rect[1]+user_y)
-#    im1.show()
-    im1 = ImageGrab.grab(((game_rect[0]+590,game_rect[1]+210,game_rect[0]+600+24,game_rect[1]+219+14)))
-    im2 = Image.open('jiayi.bmp')
-    print When2Esct(im1, im2)
-    if When2Esct(im1, im2)<8:
-        while(1):
+    time.sleep(0.1)
+    moveAndclick(user_x, user_y)
+    time.sleep(1)
+#    im1 = Image.open('1.jpg')
+#    rgb_im = im2.convert('RGB')
+#    r,g,b = rgb_im.getpixel((1,1))
+#    print r,g,b
+    while(1):
             moveAndclick(game_rect[0]+user_x, game_rect[1]+user_y)
             time.sleep(0.5)
             moveAndclick(game_rect[0]+579, game_rect[1]+226)
@@ -298,10 +293,6 @@ if __name__ == '__main__':
             time.sleep(1)
             pressHoldRelease('enter')  
             time.sleep(0.5)
-            im1 = ImageGrab.grab(((game_rect[0]+590,game_rect[1]+210,game_rect[0]+600+24,game_rect[1]+219+14)))
-            if When2Esct(im1, im2)>10:
-                print 'don\'t exit!'
-                time.sleep(1)
-    else:
-        print 'don\'t exit!'
+            moveAndclick(user_x, user_y)
+            time.sleep(3)
         
