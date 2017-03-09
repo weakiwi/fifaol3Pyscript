@@ -9,7 +9,7 @@ from PIL import ImageGrab
 from PIL import Image
 import operator
 import math
-VK_CODE = {
+VK_CODE = { #定义主要按键的键值
   'backspace':0x08,
   'tab':0x09,
   'clear':0x0C,
@@ -158,7 +158,7 @@ VK_CODE = {
   '`':0xC0}
 class POINT(Structure):
   _fields_ = [("x", c_ulong),("y", c_ulong)]
-def press(*args):
+def press(*args):#定义短按操作
     '''
     one press, one release.
     accepts as many arguments as you want. e.g. press('left_arrow', 'a','b').
